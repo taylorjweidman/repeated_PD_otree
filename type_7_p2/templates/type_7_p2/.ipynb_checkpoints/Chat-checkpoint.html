@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'global/matrix.css' %}" />
+
+    <style>
+        .highlight-row-on-hover:hover td {
+            background-color: #fcf8e3;
+        }
+        .red {background-color: #f66666;}
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+<head><h1 align="center" >Pre-Cycle Chat</h1></head>
+
+<hr>
+
+<div class="container">
+    <div>
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+        <tr>
+            <th colspan="6" style="border-top:solid 1px #ffffff; border-left:solid 1px #ffffff; border-right:solid 1px #ffffff"><span><h3></h3></th>
+        </tr>
+            
+        <div style="margin-top: 60px">
+    {% chat nickname=nickname %}
+</div>
+        </table>
+    </div>
+<div align="center">
+    <button class="btn btn-primary" onclick="next_chat();">Finish Chat</button>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+function next_chat() {
+    var a = "{{nickname}}";
+    $('.otree-chat__input').val("<" + a + " has left>" );
+    $('.otree-chat__btn-send').click();
+}
+
+</script>    
+{% endblock %}

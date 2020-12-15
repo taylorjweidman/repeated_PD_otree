@@ -1,0 +1,107 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 2 Instructions
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+<div class="card-body">
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+    
+    <p>
+        Part 2 is very similar to Part 1. However, in each of the 10 Cycles in Part 2 you will instead be matched to a single participant in the room for each Cycle. Once a Cycle is completed, you will be randomly matched to a new participant for the next Cycle.
+    </p>
+    
+    <p>
+        Similar to Part 1, the Cycle payoff is determined by the last round in the Cycle, where the payoff depends on the action you chose and the the action chosen by the matched participant for that Cycle. If a particular Round is the Cycle’s last, and that Cycle is the one selected for final payment, there are four possible payoff outcomes. 
+    </p>
+
+    <ul>
+        <li> If both you and the other participant choose the Green action, you get a round payoff of {{Constants.cooperate_payoff}}. </li>
+        <li> If you choose the Green action and the other participant chooses Red, you get a round payoff of {{ Constants.betrayed_payoff }}. </li>
+        <li> If you choose the Red action and the other participant chooses Green, you get a round payoff of {{Constants.betray_payoff}}. </li>
+        <li> If  both  you  and  the  other  participant  choose  the  Red  action,  you  get  a  round payoff of {{Constants.defect_payoff}}. </li>
+    </ul>
+    
+    <p>
+        <b>Round Payoff Table.</b> These payoffs are summarized in the following payoff table:
+    </p>
+
+
+    <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+
+            
+            <tr>
+                <th colspan="2" style="border-top:solid 1px #F8F8F8; border-left:solid 1px #F8F8F8; border-bottom:solid 1px #F8F8F8; border-right:solid 1px #F8F8F8"></th>
+                <th colspan="2" style="border-top:solid 1px #F8F8F8; border-left:solid 1px #F8F8F8; border-right:solid 1px #F8F8F8">Other Participant's Action</th>
+            </tr>
+              
+            <tr>
+                <th style="border-top:solid 1px #F8F8F8; border-left:solid 1px #F8F8F8; border-bottom:solid 1px #F8F8F8; border-right:solid 1px #F8F8F8"></th>
+                <th style="border-top:solid 1px #F8F8F8; border-left:solid 1px #F8F8F8"></th>
+                <th style="color:green; border-top:solid 1px #E8E8E8; border-bottom:solid 1px #E8E8E8; border-left:solid 1px #E8E8E8">Green</th>
+                <th style="color:red">Red</th>
+            </tr>
+              
+            <th rowspan="2" valign="bottom" style="border-top:solid 1px #F8F8F8; border-bottom:solid 1px #F8F8F8; border-left:solid 1px #F8F8F8">Your Action</th>
+            <tr>
+                    <div>
+                        <td style="color:green" id="Green1"><b>Green</b></td>
+                    </div>
+                
+                <td id="Green2">{{Constants.cooperate_payoff}}</td>
+                <td id="Green3">{{ Constants.betrayed_payoff }}</td>
+            </tr>
+            
+            <th rowspan="2" valign="middle" style="border-top:solid 1px #F8F8F8; border-bottom:solid 1px #F8F8F8; border-left:solid 1px #F8F8F8"></th>
+            <tr>
+                    <div>
+                        <td style="color:red; " id="Red1" ><b>Red</b></td>
+                    </div>
+                <td id="Red2">{{Constants.betray_payoff}}</td>
+                <td id="Red3">{{Constants.defect_payoff}}</td>
+            </tr>
+    </table>
+
+</div>
+</div>
+
+<div class="card bg-light instructions">
+<div class="card-body">
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+    
+    <h2>Some examples of these payoffs: </h2>
+
+    <p>
+        <b>Case 1.</b> Suppose you choose Green and the other participant in the Cycle also choose Green. If that Round is the final one in the Cycle both of you would get payoff of {{Constants.cooperate_payoff}}.
+    </p>
+        
+    <p>
+        <b>Case 2.</b> Suppose you choose Green while the other participant chooses Red. If that Round is the final one in the Cycle you would get payoff of {{Constants.betrayed_payoff}}, while the otherparticipant would get a payoff of {{Constants.betray_payoff}}.
+    </p>
+
+    <p>
+        <b>Case 3.</b> Suppose you choose Red while the other participant chooses Green. If that Round is the final one in the Cycle you would get a payoff of {{Constants.betray_payoff}}, while the other participant would get a payoff of {{ Constants.betrayed_payoff }}.
+    </p>
+    
+    <p>
+        <b>Case 4.</b> Suppose you and the other participant choose Red. If that Round is the final one in the Cycle you would get a payoff of {{Constants.defect_payoff}}.  
+    </p>
+
+</div>
+</div>
+
+
+<div align="left">
+    <button class="btn btn-primary"> Please Wait To Click Until Told</button>
+</div>
+
+{% endblock %}
